@@ -14,11 +14,6 @@ permissions:
 concurrency:
   group: ${{ inputs.aptos_env }}
 
-env:
-  # this expression is only useful if we deploy from a PR directly, which we sometimes may do during development and maybe in future for the dev environment
-  # but let's keep it here for now to enable these scenarios. For more info on what this expression is doing check the comments in the ./build-images.yaml workflow.
-  GIT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
